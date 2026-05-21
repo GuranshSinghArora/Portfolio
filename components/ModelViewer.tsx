@@ -39,25 +39,29 @@ interface ModelViewerProps {
 
 export default function ModelViewer({ modelUrl, modelEmbedUrl }: ModelViewerProps) {
   // If a GrabCAD / Sketchfab embed URL is provided, use iframe
-  if (modelEmbedUrl) {
-    return (
-      <div className="model-viewer">
-        <iframe
-          src={modelEmbedUrl}
-          allowFullScreen
-          allow="autoplay; fullscreen; xr-spatial-tracking"
-          className="w-full h-full border-0"
-          title="3D Model Viewer"
-        />
-        <div className="absolute bottom-3 right-3 flex gap-1.5">
-          <div className="flex items-center gap-1 px-2 py-1 rounded text-xs"
-               style={{ background: 'rgba(8,12,20,0.8)', color: '#60a5fa', border: '1px solid rgba(59,130,246,0.2)' }}>
-            <Move3D size={11} /> Drag to rotate
-          </div>
-        </div>
-      </div>
-    )
-  }
+if (modelEmbedUrl) {
+  return (
+    <div
+      className="w-full h-full rounded-xl overflow-hidden"
+      style={{
+        background: '#0d1220',
+        border: '1px solid rgba(59,130,246,0.15)',
+      }}
+    >
+      <iframe
+        src={modelEmbedUrl}
+        allowFullScreen
+        allow="autoplay; fullscreen; xr-spatial-tracking"
+        title="3D Model Viewer"
+        className="w-full h-full"
+        style={{
+          border: 'none',
+          display: 'block',
+        }}
+      />
+    </div>
+  )
+}
 
   // Otherwise use three.js canvas (local .glb or placeholder)
   return (

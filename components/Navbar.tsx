@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import { FolderOpen, FileText, Mail, Home } from 'lucide-react'
 
 const navItems = [
@@ -12,14 +13,34 @@ const navItems = [
 
 export default function Navbar() {
   const path = usePathname()
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 py-4"
-         style={{ background: 'rgba(8,12,20,0.85)', backdropFilter: 'blur(16px)', borderBottom: '1px solid rgba(59,130,246,0.08)' }}>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 py-4 transition-all duration-300 ${
+        scrolled
+          ? 'backdrop-blur-md border-b'
+          : 'bg-transparent'
+      }`}
+      style={{
+        background: scrolled ? 'rgba(5, 10, 20, 0.55)' : 'transparent',
+        borderColor: scrolled ? 'rgba(59,130,246,0.08)' : 'transparent',
+      }}
+    >
 
       {/* Logo */}
       <Link href="/" className="font-syne font-extrabold text-xl tracking-tight text-text hover:text-accent transition-colors">
-        YN<span className="text-accent">.</span>
+        Guransh<span className="text-accent">.</span>
       </Link>
 
       {/* Icon nav — right side */}

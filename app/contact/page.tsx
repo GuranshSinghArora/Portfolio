@@ -1,17 +1,62 @@
 'use client'
 import { useState } from 'react'
-import { Mail, Github, Linkedin, MapPin, Phone, Send } from 'lucide-react'
+import type React from 'react'
+import { Mail, Github, Linkedin, MapPin, Phone, Send, Loader2 } from 'lucide-react'
 
 export default function ContactPage() {
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
 
-  // For a real form, connect to Formspree, EmailJS, or a Next.js API route.
-  // Instructions in the README.
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // TODO: connect your form service here
-    setSent(true)
+    setLoading(true)
+    setError('')
+
+    try {
+      const response = await fetch('https://formspree.io/f/mdajkelb', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setSent(true)
+        setForm({ name: '', email: '', subject: '', message: '' })
+      } else {
+        // Formspree returns errors in data.errors
+        const msg = data?.errors?.map((err: { message: string }) => err.message).join(', ')
+        setError(msg || 'Something went wrong. Please try again.')
+      }
+    } catch (err) {
+      setError('Network error — please check your connection and try again.')
+      console.error(err)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const inputStyle = {
+    background: 'rgba(59,130,246,0.05)',
+    border: '1px solid rgba(59,130,246,0.15)',
+  }
+
+  const focusStyle = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    e.target.style.borderColor = 'rgba(59,130,246,0.5)'
+  }
+  const blurStyle = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    e.target.style.borderColor = 'rgba(59,130,246,0.15)'
   }
 
   return (
@@ -27,7 +72,7 @@ export default function ContactPage() {
             Get in Touch
           </h1>
           <p className="text-muted font-light max-w-md">
-            Open to internship opportunities in robotics, embedded systems, PCB design, and CAD. 
+            Open to internship opportunities in robotics, embedded systems, PCB design, and CAD.
             Feel free to reach out.
           </p>
         </div>
@@ -37,30 +82,42 @@ export default function ContactPage() {
           {/* Left — contact info */}
           <div className="md:col-span-2 space-y-4 fade-up">
             {[
-              { icon: Mail,    label: 'Email',    val: 'yourname@email.com',     href: 'mailto:yourname@email.com' },
-              { icon: Phone,   label: 'Phone',    val: '+91 XXXXX XXXXX',       href: 'tel:+91XXXXXXXXXX' },
-              { icon: MapPin,  label: 'Location', val: 'New Delhi, India',       href: null },
-              { icon: Github,  label: 'GitHub',   val: 'github.com/yourname',   href: 'https://github.com/' },
-              { icon: Linkedin,label: 'LinkedIn', val: 'in/yourname',           href: 'https://linkedin.com/' },
-            ].map(({ icon: Icon, label, val, href }) => (
-              <div key={label} className="flex items-center gap-4 p-4 rounded-xl card-hover"
+              { icon: Mail,     label: 'Email',    val: 'guranshsingh5050@gmail.com',       href: 'mailto:guranshsingh5050@gmail.com' },
+              { icon: Phone,    label: 'Phone',    val: '+91 99115 55050',                  href: 'tel:+919911555050' },
+              { icon: MapPin,   label: 'Location', val: 'New Delhi, India',                 href: 'https://maps.app.goo.gl/RBLmzGDjwYZQeef79' },
+              { icon: Linkedin, label: 'LinkedIn', val: 'in/guransh-singh-arora',           href: 'https://linkedin.com/in/guransh-singh-arora' },
+              { icon: Github,   label: 'GitHub',   val: 'github.com/guranshsingharora',    href: 'https://github.com/guranshsingharora' },
+            ].map(({ icon: Icon, label, val, href }) => {
+              const inner = (
+                <>
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                       style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.2)' }}>
+                    <Icon size={15} className="text-accent" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-muted uppercase tracking-widest" style={{ fontSize: '10px' }}>{label}</p>
+                    <p className="text-sm text-muted-light font-light truncate transition-colors duration-300 group-hover:text-accent">
+                      {val}
+                    </p>
+                  </div>
+                </>
+              )
+
+              return href ? (
+                <a key={label} href={href}
+                   target={href.startsWith('http') ? '_blank' : undefined}
+                   rel="noopener noreferrer"
+                   className="group flex items-center gap-4 p-4 rounded-xl card-hover transition-all duration-300"
                    style={{ background: '#0d1220' }}>
-                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
-                     style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.2)' }}>
-                  <Icon size={15} className="text-accent" />
+                  {inner}
+                </a>
+              ) : (
+                <div key={label} className="flex items-center gap-4 p-4 rounded-xl card-hover"
+                     style={{ background: '#0d1220' }}>
+                  {inner}
                 </div>
-                <div className="min-w-0">
-                  <p className="text-muted text-xs uppercase tracking-widest" style={{ fontSize: '10px' }}>{label}</p>
-                  {href
-                    ? <a href={href} target={href.startsWith('http') ? '_blank' : undefined} rel="noopener"
-                         className="text-sm text-muted-light hover:text-accent transition-colors font-light truncate block">
-                        {val}
-                      </a>
-                    : <p className="text-sm text-muted-light font-light">{val}</p>
-                  }
-                </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
 
           {/* Right — form */}
@@ -74,8 +131,12 @@ export default function ContactPage() {
                   </div>
                   <h3 className="font-syne font-bold text-lg mb-2">Message Sent!</h3>
                   <p className="text-muted text-sm font-light">I'll get back to you as soon as possible.</p>
-                  <button onClick={() => { setSent(false); setForm({ name: '', email: '', subject: '', message: '' }) }}
-                          className="btn-glow mt-6 text-xs">Send another</button>
+                  <button
+                    onClick={() => setSent(false)}
+                    className="btn-glow mt-6 text-xs"
+                  >
+                    Send another
+                  </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -85,14 +146,15 @@ export default function ContactPage() {
                         Name
                       </label>
                       <input
+                        name="name"
                         required
                         value={form.name}
                         onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
                         placeholder="Your name"
                         className="w-full px-3 py-2.5 rounded-lg text-sm font-light text-text placeholder-muted focus:outline-none transition-colors"
-                        style={{ background: 'rgba(59,130,246,0.05)', border: '1px solid rgba(59,130,246,0.15)' }}
-                        onFocus={e => e.target.style.borderColor = 'rgba(59,130,246,0.5)'}
-                        onBlur={e => e.target.style.borderColor = 'rgba(59,130,246,0.15)'}
+                        style={inputStyle}
+                        onFocus={focusStyle}
+                        onBlur={blurStyle}
                       />
                     </div>
                     <div>
@@ -100,56 +162,88 @@ export default function ContactPage() {
                         Email
                       </label>
                       <input
-                        required type="email"
+                        name="email"
+                        required
+                        type="email"
                         value={form.email}
                         onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
                         placeholder="your@email.com"
                         className="w-full px-3 py-2.5 rounded-lg text-sm font-light text-text placeholder-muted focus:outline-none transition-colors"
-                        style={{ background: 'rgba(59,130,246,0.05)', border: '1px solid rgba(59,130,246,0.15)' }}
-                        onFocus={e => e.target.style.borderColor = 'rgba(59,130,246,0.5)'}
-                        onBlur={e => e.target.style.borderColor = 'rgba(59,130,246,0.15)'}
+                        style={inputStyle}
+                        onFocus={focusStyle}
+                        onBlur={blurStyle}
                       />
                     </div>
                   </div>
+
                   <div>
                     <label className="block text-xs text-muted uppercase tracking-widest mb-1.5" style={{ fontSize: '10px' }}>
                       Subject
                     </label>
                     <select
+                      name="subject"
                       value={form.subject}
                       onChange={e => setForm(f => ({ ...f, subject: e.target.value }))}
                       className="w-full px-3 py-2.5 rounded-lg text-sm font-light focus:outline-none transition-colors"
-                      style={{ background: 'rgba(59,130,246,0.05)', border: '1px solid rgba(59,130,246,0.15)', color: form.subject ? '#e8eaf0' : '#6b7280' }}
+                      style={{
+                        backgroundColor: '#0b1120',
+                        border: '1px solid rgba(59,130,246,0.15)',
+                        color: form.subject ? '#e8eaf0' : '#6b7280',
+                      }}
+                      onFocus={focusStyle}
+                      onBlur={blurStyle}
                     >
-                      <option value="" disabled>Select a topic</option>
-                      <option value="internship">Internship Opportunity</option>
-                      <option value="collab">Project Collaboration</option>
-                      <option value="freelance">Freelance / Contract Work</option>
-                      <option value="general">General Inquiry</option>
+                      <option value="" disabled style={{ backgroundColor: '#0b1120', color: '#6b7280' }}>
+                        Select a topic
+                      </option>
+                      <option value="Internship Opportunity"    style={{ backgroundColor: '#0b1120', color: '#e8eaf0' }}>Internship Opportunity</option>
+                      <option value="Project Collaboration"     style={{ backgroundColor: '#0b1120', color: '#e8eaf0' }}>Project Collaboration</option>
+                      <option value="Freelance / Contract Work" style={{ backgroundColor: '#0b1120', color: '#e8eaf0' }}>Freelance / Contract Work</option>
+                      <option value="General Inquiry"           style={{ backgroundColor: '#0b1120', color: '#e8eaf0' }}>General Inquiry</option>
                     </select>
                   </div>
+
                   <div>
                     <label className="block text-xs text-muted uppercase tracking-widest mb-1.5" style={{ fontSize: '10px' }}>
                       Message
                     </label>
                     <textarea
-                      required rows={5}
+                      name="message"
+                      required
+                      rows={5}
                       value={form.message}
                       onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                       placeholder="Tell me about the opportunity or project..."
                       className="w-full px-3 py-2.5 rounded-lg text-sm font-light text-text placeholder-muted focus:outline-none transition-colors resize-none"
-                      style={{ background: 'rgba(59,130,246,0.05)', border: '1px solid rgba(59,130,246,0.15)' }}
-                      onFocus={e => e.target.style.borderColor = 'rgba(59,130,246,0.5)'}
-                      onBlur={e => e.target.style.borderColor = 'rgba(59,130,246,0.15)'}
+                      style={inputStyle}
+                      onFocus={focusStyle}
+                      onBlur={blurStyle}
                     />
                   </div>
-                  <button type="submit" className="btn-glow w-full justify-center">
-                    <Send size={13} /> Send Message
+
+                  {/* Error message */}
+                  {error && (
+                    <p className="text-xs px-3 py-2 rounded-lg"
+                       style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.2)', color: '#f87171' }}>
+                      {error}
+                    </p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="btn-glow w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {loading
+                      ? <><Loader2 size={13} className="animate-spin" /> Sending...</>
+                      : <><Send size={13} /> Send Message</>
+                    }
                   </button>
+
                   <p className="text-muted text-xs text-center font-light">
                     Or email me directly at{' '}
-                    <a href="mailto:yourname@email.com" className="text-accent hover:underline">
-                      yourname@email.com
+                    <a href="mailto:guranshsingh5050@gmail.com" className="text-accent hover:underline">
+                      guranshsingh5050@gmail.com
                     </a>
                   </p>
                 </form>

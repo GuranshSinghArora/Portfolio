@@ -2,73 +2,184 @@ import { Download, GraduationCap, Briefcase, Award, Code } from 'lucide-react'
 
 // ── EDIT ALL YOUR RESUME DATA HERE ──────────────────────────────────────────
 const data = {
-  name: 'Your Name',
-  role: 'Robotics & Embedded Systems Engineer',
-  bio: 'B.Tech student in Electronics & Communication with hands-on experience in embedded firmware, PCB design, robotic systems, and 3D CAD. Seeking internship opportunities in hardware engineering.',
-  email: 'yourname@email.com',
-  phone: '+91 XXXXX XXXXX',
+  name: 'Guransh Singh Arora',
+  role: 'Mechatronics Engineering Student · Robotics · Embedded Systems · UAVs',
+
+  bio:
+    'Passionate Mechatronics Engineering student specializing in robotics, embedded systems, UAVs, and intelligent hardware design. Experienced in developing autonomous robots, secure IoT systems, and mechatronic products through cross-disciplinary engineering and hands-on prototyping.',
+
+  email: 'guranshsingh5050@gmail.com',
+  phone: '+91 99115 55050',
   location: 'New Delhi, India',
-  github: 'github.com/yourname',
-  linkedin: 'linkedin.com/in/yourname',
+
+  github: 'github.com/guranshsingharora',
+  linkedin: 'linkedin.com/in/guransh-singh-arora',
 
   education: [
     {
-      degree: 'B.Tech — Electronics & Communication Engineering',
-      institution: 'Your College Name',
-      period: '2022 – 2026',
-      detail: 'CGPA: X.X / 10 · Relevant: Embedded Systems, Control Theory, Signal Processing, VLSI',
+      degree: 'B.Tech — Mechatronics Engineering',
+      institution: 'Manipal University Jaipur',
+      period: '2023 – 2027',
+      detail:
+        'CGPA: 8.44 / 10 · Last Semester GPA: 9.42\nRelevant Areas: Robotics, Embedded Systems, Control Systems, CAD Design',
     },
+
     {
-      degree: 'Class XII — PCM + CS',
-      institution: 'Your School Name',
-      period: '2022',
-      detail: 'XX% — CBSE Board',
+      degree: 'Class XII — PCM + Computer Science',
+      institution: 'Indraprastha World School, Delhi',
+      period: '2022 – 2023',
+      detail: 'CBSE Board · Percentage: 85.4%',
+    },
+
+    {
+      degree: 'Class X',
+      institution: 'Indraprastha World School, Delhi',
+      period: '2020 – 2021',
+      detail: 'CBSE Board · Percentage: 84.1%',
     },
   ],
 
   experience: [
     {
-      role: 'Electronics Team Member',
-      org: 'Robotics Club, Your College',
-      period: 'Aug 2022 – Present',
+      role: 'Head — Projects & Research',
+      org: 'ACM SIGBED Chapter, Manipal University Jaipur',
+      period: '2024 – 2025',
       points: [
-        'Designed and fabricated 4+ custom PCBs for club robots using KiCad and JLCPCB',
-        'Developed STM32 firmware for autonomous navigation and motor control',
-        'Led embedded systems workshops for 30+ junior members',
+        'Mentoring and supervising student projects in embedded systems and cyber-physical systems',
+        'Leading project planning, technical execution, and research-oriented development activities',
+        'Managing collaborative engineering workflows across robotics and hardware teams',
+      ],
+    },
+
+    {
+      role: 'Student Instructor — MATLAB & PID Control',
+      org: 'Manipal University Jaipur',
+      period: '2025',
+      points: [
+        'Delivered student-led lectures on MATLAB Simulink and PID control systems',
+        'Explained control-system fundamentals and practical tuning approaches',
+        'Demonstrated real-world implementation of PID control in robotic systems',
+      ],
+    },
+
+    {
+      role: 'Erasmus+ Research Exchange Participant',
+      org: 'Technische Universität Braunschweig, Germany',
+      period: '2025 – 2026',
+      points: [
+        'Selected to represent Manipal University Jaipur in an international research collaboration',
+        'Working on sustainable fabrication methods and optimization of photovoltaic modules',
+        'Collaborating with international teams under the Erasmus+ initiative',
       ],
     },
     {
-      role: 'Project Intern',
-      org: 'Company / Lab Name',
-      period: 'May 2024 – Jul 2024',
+      role: 'Research Intern at IIT Delhi',
+      org: 'Under Prof. S.K. Saha, Indian Institute of Technology (IIT) Delhi',
+      period: '2026 — Present',
       points: [
-        'Worked on [describe what you did]',
-        'Achieved [measurable outcome]',
-        'Technologies used: [list them]',
+        'Working on embedded programming and robotics-focused research projects under faculty mentorship.',
+        'Contributing to hardware development, system integration, prototyping, and technical experimentation.',
+        'Gaining exposure to advanced research workflows, engineering problem solving, and interdisciplinary project development.',
       ],
     },
   ],
 
   skills: [
-    { category: 'Embedded', items: ['STM32', 'ESP32', 'Arduino', 'FreeRTOS', 'C/C++', 'Bare-metal', 'UART/SPI/I2C', 'CAN'] },
-    { category: 'PCB Design', items: ['KiCad', 'Altium Designer', 'EasyEDA', 'LTSpice', '4-Layer', 'Impedance Control', 'JLCPCB'] },
-    { category: '3D CAD', items: ['Fusion 360', 'SolidWorks', 'ANSYS FEA', 'Topology Opt.', 'GD&T', 'FDM / SLA'] },
-    { category: 'Robotics', items: ['ROS2', 'MoveIt', 'Kinematics', 'PID Control', 'OpenCV', 'SLAM', 'Pixhawk'] },
-    { category: 'Programming', items: ['C', 'C++', 'Python', 'MATLAB', 'Git', 'Linux'] },
+    {
+      category: 'Embedded Systems',
+      items: [
+        '8051',
+        'Arduino',
+        'ESP32',
+        'Embedded C',
+        'Keil µVision',
+        'Sensors & Actuators',
+        'UART/I2C/SPI',
+      ],
+    },
+
+    {
+      category: 'Programming',
+      items: [
+        'C',
+        'Embedded C',
+        'Python',
+        'MATLAB',
+        'Simulink',
+      ],
+    },
+
+    {
+      category: 'CAD & Design',
+      items: [
+        'Fusion 360',
+        'AutoCAD',
+        '3D Printing',
+        'Mechanical Design',
+        'Rapid Prototyping',
+      ],
+    },
+
+    {
+      category: 'Electronics',
+      items: [
+        'EasyEDA',
+        'Circuit Design',
+        'PCB Design',
+        'Debugging',
+        'Electronics Integration',
+      ],
+    },
+
+    {
+      category: 'Robotics & Control',
+      items: [
+        'PID Control',
+        'Autonomous Robots',
+        'Dead Reckoning',
+        'Motion Control',
+        'UAV Systems',
+      ],
+    },
   ],
 
   achievements: [
-    { title: '2nd Place — [Competition Name]', year: '2024', detail: 'Line-following robot category' },
-    { title: 'Smart India Hackathon Finalist', year: '2023', detail: 'Hardware track, team of 6' },
-    { title: 'Best Project Award — College Tech Fest', year: '2023', detail: 'Robotic arm project' },
-    { title: 'NPTEL — Embedded Systems (Elite + Gold)', year: '2023', detail: 'Score: 89/100' },
+    {
+      title: 'Selected for Erasmus+ Research Program',
+      year: '2025',
+      detail:
+        'International collaborative research initiative with TU Braunschweig, Germany',
+    },
+
+    {
+      title: '3x Dean’s List Award',
+      year: '2025',
+      detail: 'Awarded for achieving 9.24 GPA in IV Semester, 9.67 GPA in V Semester and 9.42 GPA in VI Semester',
+    },
+
+    {
+      title: 'Patent Published in India',
+      year: '2025',
+      detail:
+        'Smart Parcel Box — Intelligent Parcel Delivery Box with Authenticated Access and Theft Detection System',
+    },
+
+    {
+      title: 'Patent Granted in Germany',
+      year: '2025',
+      detail:
+        'Smart Parcel Box patent granted internationally under German patent publication',
+    },
+
+    {
+      title: '2nd Position — Department Project Expo',
+      year: '2025',
+      detail: 'Awarded for Smart Parcel Box project',
+    },
+
   ],
 
-  certifications: [
-    'NPTEL — Embedded Systems (IIT Kharagpur) · 2023',
-    'Coursera — Control of Mobile Robots (Georgia Tech) · 2024',
-    'KiCad PCB Design — Udemy · 2023',
-  ],
+  //certifications: []
 }
 // ────────────────────────────────────────────────────────────────────────────
 
@@ -93,13 +204,13 @@ export default function ResumePage() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-12 fade-up">
           <div>
-            <div className="flex items-center gap-2 mb-2 text-xs font-medium tracking-widest uppercase" style={{ color: '#60a5fa' }}>
+            <div className="flex items-center gap-2 mb-3 text-xs font-medium tracking-widest uppercase" style={{ color: '#60a5fa' }}>
               <span className="w-5 h-px bg-accent opacity-60" /> Resume
             </div>
             <h1 className="font-syne font-extrabold text-4xl md:text-5xl tracking-tight mb-2">{data.name}</h1>
             <p className="text-muted font-light text-sm">{data.role}</p>
           </div>
-          <a href="/resume.pdf" download className="btn-glow self-start">
+          <a href="/Guransh Singh Arora CV 2026.pdf" download className="btn-glow self-start">
             <Download size={14} /> Download PDF
           </a>
         </div>
@@ -116,10 +227,10 @@ export default function ResumePage() {
               <div className="space-y-2.5 text-xs">
                 {[
                   { label: 'Email', val: data.email },
-                  { label: 'Phone', val: data.phone },
+                  { label: 'Phone', val: data.phone },                 
                   { label: 'Location', val: data.location },
-                  { label: 'GitHub', val: data.github },
                   { label: 'LinkedIn', val: data.linkedin },
+                  { label: 'GitHub', val: data.github },
                 ].map(({ label, val }) => (
                   <div key={label} className="flex flex-col gap-0.5">
                     <span className="text-muted uppercase tracking-widest" style={{ fontSize: '10px' }}>{label}</span>
@@ -146,7 +257,7 @@ export default function ResumePage() {
               </div>
             </div>
 
-            {/* Certifications */}
+            {/* Certifications
             <div className="rounded-xl p-5 fade-up" style={{ background: '#0d1220', border: '1px solid rgba(59,130,246,0.1)', animationDelay: '0.15s' }}>
               <SectionHead icon={Award} label="Certifications" />
               <ul className="space-y-2">
@@ -156,8 +267,8 @@ export default function ResumePage() {
                   </li>
                 ))}
               </ul>
-            </div>
-          </div>
+            </div>*/}
+          </div> 
 
           {/* RIGHT — education, experience, achievements */}
           <div className="md:col-span-2 space-y-6">
@@ -174,13 +285,15 @@ export default function ResumePage() {
                         <div className="w-px flex-1 mt-2" style={{ background: 'rgba(59,130,246,0.15)' }} />
                       )}
                     </div>
-                    <div className="pb-4 min-w-0">
-                      <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
-                        <h3 className="font-syne font-bold text-sm">{e.degree}</h3>
-                        <span className="text-xs font-mono" style={{ color: '#60a5fa' }}>{e.period}</span>
+                    <div className="pb-4 w-full">
+                      <div className="flex items-start justify-between gap-4 mb-1">
+                        <h3 className="font-syne font-bold text-sm flex-1 pr-4">{e.degree}</h3>
+                        <span className="text-xs font-mono flex-shrink-0 whitespace-nowrap ml-auto"  style={{ color: '#60a5fa' }}>
+                          {e.period}
+                        </span>
                       </div>
                       <p className="text-muted text-xs mb-1 font-light">{e.institution}</p>
-                      <p className="text-muted-light text-xs font-light">{e.detail}</p>
+                      <p className="text-muted-light text-xs font-light whitespace-pre-line">{e.detail}</p>
                     </div>
                   </div>
                 ))}
@@ -199,10 +312,17 @@ export default function ResumePage() {
                         <div className="w-px flex-1 mt-2" style={{ background: 'rgba(59,130,246,0.15)' }} />
                       )}
                     </div>
-                    <div className="pb-2 min-w-0">
-                      <div className="flex flex-wrap items-center justify-between gap-2 mb-0.5">
-                        <h3 className="font-syne font-bold text-sm">{exp.role}</h3>
-                        <span className="text-xs font-mono" style={{ color: '#60a5fa' }}>{exp.period}</span>
+                    <div className="pb-2 w-full">
+                      <div className="flex items-start justify-between gap-4 mb-0.5">
+                        <h3 className="font-syne font-bold text-sm flex-1 pr-4">
+                          {exp.role}
+                        </h3>
+                        <span
+                          className="text-xs font-mono flex-shrink-0 whitespace-nowrap ml-auto"
+                          style={{ color: '#60a5fa' }}>
+                          {exp.period}
+                        </span>
+
                       </div>
                       <p className="text-muted text-xs mb-3 font-light">{exp.org}</p>
                       <ul className="space-y-1.5">
