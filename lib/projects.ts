@@ -752,17 +752,17 @@ export const projects: Project[] = [
           'Differential wheel velocity correction during turning manoeuvres',
           'Real-time sensor fusion for robust pose estimation',
         ],
-        media: [
-          {
-            type: 'gallery',
-            images: [
-              { src: '/gtg/mpu.jpg', caption: 'MPU6050 inertial sensing integration' },
-              { src: '/gtg/encoders.jpg', caption: 'Encoder feedback system for odometry' },
-              { src: '/gtg/control.jpg', caption: 'Closed-loop control electronics and wiring' },
-            ],
-            size: 'large',
-          },
-        ],
+        // media: [
+        //   {
+        //     type: 'gallery',
+        //     images: [
+        //       { src: '/gtg/mpu.jpg', caption: 'MPU6050 inertial sensing integration' },
+        //       { src: '/gtg/encoders.jpg', caption: 'Encoder feedback system for odometry' },
+        //       { src: '/gtg/control.jpg', caption: 'Closed-loop control electronics and wiring' },
+        //     ],
+        //     size: 'large',
+        //   },
+        // ],
       },
 
       {
