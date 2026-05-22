@@ -16,7 +16,7 @@ const syne = Syne({
 })
 
 export const metadata: Metadata = {
-  title: 'Your Name | Portfolio',
+  title: 'Guransh Singh | Portfolio',
   description: 'Robotics, Embedded Systems, PCB Design & 3D CAD Portfolio',
 }
 
