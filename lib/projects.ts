@@ -86,7 +86,7 @@ export const projects: Project[] = [
 
     heroMedia: {
       type: 'video',
-      videoFile: '/plane/planeflight.mp4',
+      videoFile: '/plane/planeflight.MP4',
       size: 'cinematic',
     },
 
