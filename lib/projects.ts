@@ -806,7 +806,7 @@ export const projects: Project[] = [
         media: [
           {
             type: 'video',
-            videoFile: '/gtg-demo.mp4',
+            videoFile: '/gotogoal/smooth.mp4',
             size: 'cinematic',
           },
         ],
