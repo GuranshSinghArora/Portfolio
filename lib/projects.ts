@@ -87,7 +87,7 @@ export const projects: Project[] = [
     heroMedia: {
       type: 'video',
       videoFile: '/plane/planeflight.MP4',
-      size: 'cinematic',
+      size: 'large',
     },
 
     specs: [
@@ -194,7 +194,7 @@ export const projects: Project[] = [
         {
           type: 'video',
           videoFile: '/plane/groundtest.mp4',
-          size: 'cinematic',
+          size: 'large',
         },
       ],
     },
@@ -286,7 +286,7 @@ export const projects: Project[] = [
           {
             type: 'video',
             videoFile: '/ornithopter/mechanism.mp4',
-            size: 'cinematic',
+            size: 'large',
           },
           {
             type: 'gallery',
@@ -397,7 +397,7 @@ export const projects: Project[] = [
           {
             type: 'video',
             videoFile: '/ornithopter/working.mp4',
-            size: 'cinematic',
+            size: 'large',
           },
         ],
       },
@@ -626,7 +626,7 @@ export const projects: Project[] = [
           {
             type: 'video',
             videoFile: '/safedrop/working.mp4',
-            size: 'cinematic',
+            size: 'large',
           },
           {
             type: 'gallery',
@@ -807,7 +807,7 @@ export const projects: Project[] = [
           {
             type: 'video',
             videoFile: '/gotogoal/smooth.mp4',
-            size: 'cinematic',
+            size: 'large',
           },
         ],
       },
@@ -840,7 +840,7 @@ export const projects: Project[] = [
     heroMedia: {
       type: 'video',
       videoFile: '/8051/8051.mp4',
-      size: 'cinematic',
+      size: 'large',
     },
 
     specs: [
@@ -942,7 +942,7 @@ export const projects: Project[] = [
           {
             type: 'video',
             videoFile: '/geartestrig/animation.mp4',
-            size: 'cinematic',
+            size: 'large',
           },
         ],
       },
